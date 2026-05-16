@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Previous Complaints</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            margin: 0;
+            text-align: center;
+
+            background-image: url("https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg");
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .overlay{
+            background-color: rgba(0,0,0,0.7);
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .box{
+            width: 90%;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        h1{
+            color: darkblue;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th{
+            background-color: darkblue;
+            color: white;
+            padding: 14px;
+        }
+
+        td{
+            padding: 12px;
+            border: 1px solid gray;
+        }
+
+        tr:hover{
+            background-color: #d9f2d9;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="box">
+
+        <h1>Previous Complaints</h1>
+
+        <table id="complaintTable">
+
+            <tr>
+                <th>Name</th>
+                <th>Room No</th>
+                <th>Admission No</th>
+                <th>Floor</th>
+                <th>Complaint Type</th>
+                <th>Complaint</th>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+    let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+
+    let table = document.getElementById("complaintTable");
+
+    complaints.forEach(function(data){
+
+        let row = table.insertRow();
+
+        row.insertCell(0).innerHTML = data.name;
+        row.insertCell(1).innerHTML = data.room;
+        row.insertCell(2).innerHTML = data.admission;
+        row.insertCell(3).innerHTML = data.floor;
+        row.insertCell(4).innerHTML = data.type;
+        row.insertCell(5).innerHTML = data.complaint;
+
+    });
+
+</script>
+
+</body>
+</html>
